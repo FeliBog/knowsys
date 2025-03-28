@@ -28,12 +28,8 @@ class Battery(Info):
         info = sensors_battery()
         if info.secsleft <= 0: self.discharge = None
         else: self.discharge = info.secsleft
-        self.ispower = info.power_plugged
+        if info.power_plugged != True | False: self.ispower = info.power_plugged
+        else: self.ispower = None
 
 if __name__ == "__main__":
-    import time
-    battery = Battery()
-    while 1:
-        battery.update()
-        print(f"{battery.discharge} seconds")
-        time.sleep(1)
+    pass
