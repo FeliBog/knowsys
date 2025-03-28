@@ -40,6 +40,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+## Examples
+
+### Get RAM Usage in %
+```
+import knowsys, time
+ram = knowsys.RAM()
+while 1:
+  ram.update()
+  print(ram.percent)
+  time.sleep(1)
+```
+
+### Get Processor Usage in %
+```
+import knowsys, time
+proc = knowsys.Processor()
+while 1:
+  proc.update()
+  print(proc.percent)
+  time.sleep(1)
+```
+
+### Get Battery Time to Discharge
+```
+import knowsys, time
+battery = knowsys.Battery()
+while 1:
+  battery.update()
+  print(f"{battery.discharge} seconds")
+  time.sleep(1)
+```
+
 ## Project using
 
 platform: processor architecture and name
