@@ -8,6 +8,10 @@ from uuid import getnode
 class Info:
     def __init__(self):
         self.update()
+class OS(Info):
+    def update(self):
+        uname = uname()
+        self.name = f"{uname.system} {uname.release} ({uname.version})"
 
 class Processor(Info):
     def update(self):
@@ -44,6 +48,16 @@ class Network(Info):
         self.public_ip = pubipinfo["ip"]
         mac = getnode()
         self.mac = mac
+        self.ipinfo = pubipinfo
+class PublicIP(Info):
+    def update(self):
+        net = Network()
+        pubipinfo = net.ipinfo
+        self.country = pubipinfo["country"]
+        self.region = pubipinfo["region"]
+        self.city = pubipinfo["city"]
+        self.postal = pubipinfo["postal"]
+        self.timezone = pubipinfo["timezone"]
 
 if __name__ == "__main__":
     pass
