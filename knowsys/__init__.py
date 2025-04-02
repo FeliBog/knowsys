@@ -1,5 +1,9 @@
 from platform import uname, architecture
 from psutil import *
+from socket import getfqdn, gethostbyname
+from requests import get
+from json import loads
+from uuid import getnode
 
 class Info:
     def __init__(self):
@@ -30,6 +34,16 @@ class Battery(Info):
         else: self.discharge = info.secsleft
         if info.power_plugged != True | False: self.ispower = info.power_plugged
         else: self.ispower = None
+class Network(Info):
+    def update(self):
+        hostname = getfqdn()
+        self.hostname = hostname
+        localip = gethostbyname(hostname)
+        self.local_ip = localip
+        pubipinfo = loads(get('http://ipinfo.io/json').text)
+        self.public_ip = pubipinfo["ip"]
+        mac = getnode()
+        self.mac = mac
 
 if __name__ == "__main__":
     pass
