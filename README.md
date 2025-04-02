@@ -77,3 +77,5 @@ while 1:
 platform: processor architecture and name
 
 psutil: battery, RAM
+
+requests: public ip
