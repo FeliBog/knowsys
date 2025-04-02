@@ -78,4 +78,10 @@ platform: processor architecture and name
 
 psutil: battery, RAM
 
+socket: local ip
+
 requests: public ip
+
+json: for parse strings
+
+uuid: MAC
